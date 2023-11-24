@@ -61,12 +61,18 @@ export default function Page() {
 
     let email = data.get('email')
 		let pass = data.get('pass')
+    let secondpass = data.get('secondpass')
+		let address = data.get('address')
+    let phone = data.get('phone')
 
     console.log("Sent email:" + email)
     console.log("Sent pass:" + pass)
+    console.log("Sent secondpass:" + secondpass)
+    console.log("Sent address:" + address)
+    console.log("Sent phone:" + phone)
 
 
-    runDBCallAsync(`http://localhost:3000/api/login?email=${email}&pass=${pass}`)
+    runDBCallAsync(`http://localhost:3000/api/register?email=${email}&pass=${pass}&secondpass=${secondpass}&address=${address}&phone=${phone}`)
 
 
 
@@ -128,6 +134,36 @@ export default function Page() {
             type="pass"
             id="pass"
             autoComplete="current-password"
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="secondpass"
+            label="Repeat Pass"
+            type="secondpass"
+            id="secondpass"
+            autoComplete="current-secondpassword"
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="address"
+            label="Address"
+            type="address"
+            id="address"
+            autoComplete="current-address"
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="phone-number"
+            label="Phone number"
+            type="phone-number"
+            id="phone-number"
+            autoComplete="current-phone-number"
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
