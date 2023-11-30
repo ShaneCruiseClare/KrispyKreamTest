@@ -20,9 +20,9 @@ import { useState, useEffect } from 'react'
 
 export default function Page() {
    
-  function getCart(pname, price){
-    console.log("getting cart: " + pname + price)
-    fetch("api/getCart?pname=" + pname + price);
+  function getCart(pname){
+    console.log("getting cart: " + pname)
+    fetch("api/getCart?pname=" + pname);
     }
   
     const [data, setData] = useState(null)
