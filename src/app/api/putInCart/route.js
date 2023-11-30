@@ -21,7 +21,7 @@ export async function GET(req, res) {
     console.log('Connected successfully to server');
     const db = client.db(dbName);
     const collection = db.collection('products'); // collection name
-    var myobj = { pname: pname, username: "B00147191@test.ie"};
+    var myobj = { pname: pname, username: "shane@clare.ie"};
     const insertResult = await collection.insertOne(myobj);
 
     //==========================================================
