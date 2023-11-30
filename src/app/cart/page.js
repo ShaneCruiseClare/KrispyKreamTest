@@ -20,7 +20,7 @@ import { useState, useEffect } from 'react'
 
 export default function Page() {
    
-  function getCart(pname){
+  function getCart(pname, price){
     console.log("getting cart: " + pname + price)
     fetch("api/getCart?pname=" + pname + price);
     }
