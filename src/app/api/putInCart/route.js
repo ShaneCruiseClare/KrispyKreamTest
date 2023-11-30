@@ -20,7 +20,7 @@ export async function GET(req, res) {
     await client.connect();
     console.log('Connected successfully to server');
     const db = client.db(dbName);
-    const collection = db.collection('shopping_cart'); // collection name
+    const collection = db.collection('products'); // collection name
     var myobj = { pname: pname, username: "sample@test.com"};
     const insertResult = await collection.insertOne(myobj);
 
