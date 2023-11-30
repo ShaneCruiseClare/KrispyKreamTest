@@ -25,7 +25,7 @@ export default function Page() {
 //
 function putInCart(pname){
   console.log("putting in cart: " + pname)
-  fetch("api/putInCart?pname="+pname);
+  fetch("api/putInCart?pname=" + pname);
   }
 
   const [data, setData] = useState(null)
