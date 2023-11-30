@@ -25,14 +25,14 @@ export default function Page() {
 //
 function putInCart(pname){
   console.log("putting in cart: " + pname)
-  fetch("api/putInCart?pname="+pname);
+  fetch("api/getProducts?pname="+pname);
   }
 
   const [data, setData] = useState(null)
   const [weather, setWeatherData] = useState(0)
 
   useEffect(() => {
-  fetch('api/getProducts')
+  fetch('api/putInCart')
   .then((res) => res.json())
   .then((data) => {
   setData(data)
