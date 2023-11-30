@@ -22,12 +22,12 @@ export default function Page() {
    
   function getCart(pname){
     console.log("getting cart: " + pname)
-    fetch("api/getCart?pname=" + pname);
+    fetch("api/putInCart?pname=" + pname);
     }
   
     const [data, setData] = useState(null)
     useEffect(() => {
-    fetch('api/putInCart')
+    fetch('api/getCart')
     .then((res) => res.json())
     .then((data) => {
     setData(data)
