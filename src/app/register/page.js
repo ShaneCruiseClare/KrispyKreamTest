@@ -60,6 +60,11 @@ export default function Page() {
     if(pass.length ==0){
       errorMessage += ' No password added ';
       }
+    
+    let secondpass = data.get('secondpass')
+    if(secondpass == pass){
+      errorMessage += ' passwords are not the same ';
+      }
       
     // pull in the validator
     var validator = require("email-validator");
