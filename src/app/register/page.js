@@ -19,8 +19,6 @@ import { green, purple } from '@mui/material/colors';
 
 export default function Page() {
 
-
-
   /*
   This function does the actual work
   calling the fetch to get things from the database.
@@ -54,11 +52,6 @@ export default function Page() {
     if(pass.length ==0){
       errorMessage += ' No password added ';
       }
-      // Validate the password
-    let secondpass = data.get('secondpass')
-    if(secondpass == pass){
-      errorMessage += ' password not the same ';
-      }
       
     // pull in the validator
     var validator = require("email-validator");
@@ -76,7 +69,6 @@ export default function Page() {
       return errorMessage;
 
     }
-
 
   /*
 
@@ -104,7 +96,6 @@ export default function Page() {
     } 
       else 
     {
-
 		const data = new FormData(event.currentTarget);
 
 
@@ -124,7 +115,7 @@ export default function Page() {
     runDBCallAsync(`api/register?email=${email}&pass=${pass}&secondpass=${secondpass}&address=${address}&phone=${phone}`)
     }
   }; // end handler
-  
+
 
 
 
@@ -138,23 +129,12 @@ export default function Page() {
     },
   });
   
-    // first
-    const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => {
-    setOpen(true);
-    };
-  
-    const handleClose = () => {
-    setOpen(false);
-    };
-  
-    // second
-    const [errorHolder, setErrorHolder] = React.useState(false);
+
+
 
   
   return (
     <ThemeProvider theme={theme}>
-
 <React.Fragment>
   <Dialog
     open={open}
