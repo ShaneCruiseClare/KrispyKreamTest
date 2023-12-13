@@ -65,7 +65,7 @@ export default function Page() {
     // run the validator
 
     console.log("email status" + emailCheck);
-    console.log("email status" + passCheck);
+    console.log("password status" + passCheck);
 
 
     // if it is false, add to the error message.
@@ -73,15 +73,21 @@ export default function Page() {
     {
       errorMessage += 'Incorrect email';
     }
-    else if(pass.length ==0)
-    {
-      errorMessage += ' No password added';
-    }
 
       return errorMessage;
 
     }
 
+    if (pass.length ==0)
+    {
+      errorMessage += ' No password added';
+      
+    }
+      return errorMessage;
+
+    }
+      
+  
   /*
   When the button is clicked, this is the event that is fired.
   The first thing we need to do is prevent the default refresh of the page.
@@ -253,4 +259,3 @@ export default function Page() {
     </ThemeProvider>
 
   );
-}
