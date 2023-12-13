@@ -54,20 +54,28 @@ export default function Page() {
 
     // get the email
     let email = data.get('email')
+    // Validate the password
+    let pass = data.get('pass')
 
     // pull in the validator
     var validator = require("email-validator");
 
     let emailCheck = validator.validate(email);
+    let passCheck = validator.validate(pass);
     // run the validator
 
     console.log("email status" + emailCheck);
+    console.log("email status" + passCheck);
 
 
     // if it is false, add to the error message.
     if(emailCheck == false)
     {
       errorMessage += 'Incorrect email';
+    }
+    else if(pass.length ==0)
+    {
+      errorMessage += ' No password added';
     }
 
       return errorMessage;
