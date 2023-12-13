@@ -57,20 +57,15 @@ export default function Page() {
     let email = data.get('email')
     // Validate the password
     let pass = data.get('pass')
+    let secondpass = data.get('secondpass')
+
     if(pass.length ==0){
       errorMessage += ' No password added ';
       }
-    
-    let secondpass = data.get('secondpass')
+
     if(secondpass.length == 0){
       errorMessage += '/ No password added ';
       }
-
-    let phone = data.get('phone')
-    if(phone.length == 0){
-        errorMessage += '/ No phone added ';
-      } 
-      
 
     // pull in the validator
     var validator = require("email-validator");
