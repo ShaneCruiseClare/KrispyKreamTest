@@ -25,9 +25,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function Page() {
-
-
-
   /*
   This function does the actual work
   calling the fetch to get things from the database.
@@ -64,7 +61,7 @@ export default function Page() {
     let emailCheck = validator.validate(email);
 
     // print the status true or false
-    console.log("email status" +emailCheck);
+    console.log("email status" + emailCheck);
 
     // if it is false, add to the error message.
     if(emailCheck == false)
@@ -76,8 +73,14 @@ export default function Page() {
 
     }
 
-  /*
+    // Validate the password
+    let pass = data.get('pass')
 
+    if (pass.length ==0) {
+      errorMessage += ' No password added';
+    }
+
+  /*
   When the button is clicked, this is the event that is fired.
   The first thing we need to do is prevent the default refresh of the page.
   */
