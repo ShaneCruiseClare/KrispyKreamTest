@@ -122,9 +122,9 @@ export default function Page() {
 
 
     runDBCallAsync(`api/register?email=${email}&pass=${pass}&secondpass=${secondpass}&address=${address}&phone=${phone}`)
-
+    }
   }; // end handler
-
+  
 
 
 
@@ -287,5 +287,4 @@ export default function Page() {
     </ThemeProvider>
 
   );
-}
 }
