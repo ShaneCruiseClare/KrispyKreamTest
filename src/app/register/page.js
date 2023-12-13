@@ -138,9 +138,19 @@ export default function Page() {
   });
   
 
+ // first
+ const [open, setOpen] = React.useState(false);
+ const handleClickOpen = () => {
+ setOpen(true);
+ };
 
+ const handleClose = () => {
+ setOpen(false);
+ };
 
-  
+ // second
+ const [errorHolder, setErrorHolder] = React.useState(false);
+
   return (
     <ThemeProvider theme={theme}>
 <React.Fragment>
