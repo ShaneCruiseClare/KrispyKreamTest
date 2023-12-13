@@ -57,7 +57,7 @@ export default function Page() {
     // Validate the password
     let pass = data.get('pass')
     if(pass.length ==0){
-      errorMessage += ' No password added';
+      errorMessage += ' No password added ';
       }
       
     // pull in the validator
