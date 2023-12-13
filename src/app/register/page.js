@@ -66,15 +66,6 @@ export default function Page() {
       errorMessage += '/ No password added ';
       }
 
-    let address = data.get('address')
-    if(address == false){
-        errorMessage += '/ No address added ';
-      }
-      else
-      {
-        return errorMessage;
-      }
-
     let phone = data.get('phone')
     if(phone.length == 0){
         errorMessage += '/ No phone added ';
