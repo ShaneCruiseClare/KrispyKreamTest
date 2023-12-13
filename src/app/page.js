@@ -17,7 +17,6 @@ import {ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 import { green, purple } from '@mui/material/colors';
 
-import { validate } from 'email-validator';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -58,7 +57,7 @@ export default function Page() {
     // pull in the validator
     var validator = require("email-validator");
     // pull in the validator
-    var validator = require("pass-validator");
+    var validator = require("email-validator");
     // run the validator
     let emailCheck = validator.validate(email);
     // run the validator
@@ -79,7 +78,7 @@ export default function Page() {
     }
 
 
-    if (pass.length ==0) {
+    if (pass.length == 0) {
       errorMessage += ' No password added';
     }
 
