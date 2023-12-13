@@ -62,10 +62,20 @@ export default function Page() {
       }
     
     let secondpass = data.get('secondpass')
-    if(secondpass == pass){
-      errorMessage += ' passwords are not the same ';
+    if(secondpass.length == 0){
+      errorMessage += '/ No password added ';
       }
-      
+
+    let address = data.get('address')
+    if(address == false){
+        errorMessage += '/ No address added ';
+      }
+        
+    let phone = data.get('phone')
+    if(phone.length == 0){
+        errorMessage += '/ No phone added ';
+      } 
+
     // pull in the validator
     var validator = require("email-validator");
 
@@ -76,7 +86,7 @@ export default function Page() {
     // if it is false, add to the error message.
     if(emailCheck == false)
     {
-      errorMessage += 'Incorrect email';
+      errorMessage += '/ Incorrect email ';
     }
 
       return errorMessage;
