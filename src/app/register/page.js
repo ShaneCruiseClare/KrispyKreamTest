@@ -70,11 +70,16 @@ export default function Page() {
     if(address == false){
         errorMessage += '/ No address added ';
       }
-        
+      else
+      {
+        return errorMessage;
+      }
+
     let phone = data.get('phone')
     if(phone.length == 0){
         errorMessage += '/ No phone added ';
       } 
+      
 
     // pull in the validator
     var validator = require("email-validator");
