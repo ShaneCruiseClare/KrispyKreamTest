@@ -68,26 +68,25 @@ export default function Page() {
       errorMessage += '/ No password added ';
       }
 
-      if(phone.length == 0){
-        errorMessage += '/ No phone added ';
-      }
-
     // pull in the validator
     var validator = require("email-validator");
 
     let emailCheck = validator.validate(email);
+    let phoneCheck = validator.validate(phone);
     // run the validator
     console.log("email status" + emailCheck);
-
+    console.log("email status" + phoneCheck);  
     // if it is false, add to the error message.
     if(emailCheck == false)
     {
       errorMessage += '/ Incorrect email ';
     }
+    else if (phoneCheck == false)
+    {
+      errorMessage += '/ Incorrect phone number ';
+    }
     
-
       return errorMessage;
-
     }
 
   /*
