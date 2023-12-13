@@ -56,17 +56,16 @@ export default function Page() {
     let email = data.get('email')
     // Validate the password
     let pass = data.get('pass')
-
+    if(pass.length ==0){
+      errorMessage += ' No password added';
+      }
+      
     // pull in the validator
     var validator = require("email-validator");
 
     let emailCheck = validator.validate(email);
-    let passCheck = validator.validate(pass);
     // run the validator
-
     console.log("email status" + emailCheck);
-    console.log("password status" + passCheck);
-
 
     // if it is false, add to the error message.
     if(emailCheck == false)
@@ -78,16 +77,6 @@ export default function Page() {
 
     }
 
-    if (pass.length ==0)
-    {
-      errorMessage += ' No password added';
-      
-    }
-      return errorMessage;
-
-    }
-      
-  
   /*
   When the button is clicked, this is the event that is fired.
   The first thing we need to do is prevent the default refresh of the page.
@@ -259,3 +248,4 @@ export default function Page() {
     </ThemeProvider>
 
   );
+}
