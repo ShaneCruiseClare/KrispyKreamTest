@@ -58,6 +58,7 @@ export default function Page() {
     // Validate the password
     let pass = data.get('pass')
     let secondpass = data.get('secondpass')
+    let phone = data.get('phone')
 
     if(pass.length ==0){
       errorMessage += ' No password added ';
@@ -65,6 +66,10 @@ export default function Page() {
 
     if(secondpass.length == 0){
       errorMessage += '/ No password added ';
+      }
+
+      if(phone.length == 0){
+        errorMessage += '/ No phone added ';
       }
 
     // pull in the validator
@@ -79,6 +84,7 @@ export default function Page() {
     {
       errorMessage += '/ Incorrect email ';
     }
+    
 
       return errorMessage;
 
