@@ -64,7 +64,7 @@ export default function Page() {
       }
 
     if(secondpass.length == 0){
-      errorMessage += '/ No password added /n';
+      errorMessage += '/ No password added ';
       }
 
     // pull in the validator
