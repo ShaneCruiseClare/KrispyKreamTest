@@ -17,7 +17,6 @@ import {ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 import { green, purple } from '@mui/material/colors';
 
-
 export default function Page() {
 
 
@@ -43,6 +42,41 @@ export default function Page() {
     }
   }
 
+  const validateForm = (event) => {
+    
+    let errorMessage = '';
+    const data = new FormData(event.currentTarget);
+
+    // get the email
+    let email = data.get('email')
+    // Validate the password
+    let pass = data.get('pass')
+    if(pass.length ==0){
+      errorMessage += ' No password added ';
+      }
+      // Validate the password
+    let secondpass = data.get('secondpass')
+    if(secondpass == pass){
+      errorMessage += ' password not the same ';
+      }
+      
+    // pull in the validator
+    var validator = require("email-validator");
+
+    let emailCheck = validator.validate(email);
+    // run the validator
+    console.log("email status" + emailCheck);
+
+    // if it is false, add to the error message.
+    if(emailCheck == false)
+    {
+      errorMessage += 'Incorrect email';
+    }
+
+      return errorMessage;
+
+    }
+
 
   /*
 
@@ -53,9 +87,24 @@ export default function Page() {
 		
 		console.log("handling submit");
 
-
     event.preventDefault();
   
+    // call out custom validator
+    let errorMessage = validateForm(event);
+
+    // save the mesage
+    setErrorHolder(errorMessage)
+
+    // if we have an error
+    if(errorMessage.length > 0)
+    {
+    
+      setOpen(true);
+
+    } 
+      else 
+    {
+
 		const data = new FormData(event.currentTarget);
 
 
@@ -89,12 +138,52 @@ export default function Page() {
     },
   });
   
-
-
+    // first
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+    setOpen(true);
+    };
+  
+    const handleClose = () => {
+    setOpen(false);
+    };
+  
+    // second
+    const [errorHolder, setErrorHolder] = React.useState(false);
 
   
   return (
     <ThemeProvider theme={theme}>
+
+<React.Fragment>
+  <Dialog
+    open={open}
+    onClose={handleClose}
+    aria-labelledby="alert-dialog-title"
+    aria-describedby="alert-dialog-description"
+  >
+
+  <DialogTitle id="alert-dialog-title">
+  {"Error"}
+  </DialogTitle>
+
+  <DialogContent>
+    <DialogContentText id="alert-dialog-description">
+      {errorHolder}
+    </DialogContentText>
+  </DialogContent>
+  
+  <DialogActions>
+
+    <Button onClick={handleClose} autoFocus>
+      Close
+    </Button>
+
+  </DialogActions>
+  </Dialog>
+
+</React.Fragment>
+
     <Container component="main"  maxWidth="xs">
       <CssBaseline />
       <Box
@@ -198,4 +287,5 @@ export default function Page() {
     </ThemeProvider>
 
   );
+}
 }
