@@ -34,25 +34,33 @@ export async function GET(req, res) {
   let hashResult = bcrypt.compareSync(pass, findResult[0].pass); // true
   console.log("checking " + findResult[0].pass);
   console.log("Hash Comparison Result " + hashResult);
-  
-  if(findResult.length >0 && hashResult == true) {
+  if(findResult.length > 0){
+
+
+    console.log("found record");
+  }
+
+  if(findResult.length >0 && hashResult == true){
     
     valid = true;
     console.log("login valid")
     
-      // save a little cookie to say we are authenticated
-      console.log("Saving username and auth status")
-      cookies().set('auth', true);
-      cookies().set('username',email)
-    } 
-    else 
-    {
+    // save a little cookie to say we are authenticated
+    console.log("Saving username and auth status")
+    cookies().set('auth', true);
+    cookies().set('username',email)
+    
+  } 
+  else 
+  {
     valid = false;
     console.log("login invalid")
-    }
-    
-    return Response.json({ "data":"" + valid + ""})
     
   }
     
+
+  
+  // at the end of the process we need to send something back.
+  return Response.json({ "data":"valid" })
+}
 
