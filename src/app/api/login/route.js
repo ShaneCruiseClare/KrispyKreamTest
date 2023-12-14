@@ -29,7 +29,7 @@ export async function GET(req, res) {
   const findResult = await collection.find({"username":
   email}).toArray();
   console.log('Found documents =>', findResult);
-  let valid = false
+  let valid = true
   const bcrypt = require('bcrypt');
   let hashResult = bcrypt.compareSync(pass, findResult[0].pass); // true
   console.log("checking " + findResult[0].pass);
