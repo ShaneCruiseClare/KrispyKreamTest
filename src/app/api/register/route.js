@@ -20,6 +20,9 @@ export async function GET(req, res) {
   console.log(address);
   console.log(phone);
 
+  const bcrypt = require('bcrypt');
+  const saltRounds = 10;
+  const hash = bcrypt.hashSync(pass, saltRounds);
  
 
   // database call goes here
@@ -33,7 +36,7 @@ export async function GET(req, res) {
   const db = client.db(dbName);
   const collection = db.collection('login'); // collection name
   const findResult = await collection.insertOne({"username": email, "pass":
-  pass, "secondpass": secondpass, "address": address, "phone": phone});
+  hash, "secondpass": secondpass, "address": address, "phone": phone});
 
 
 
