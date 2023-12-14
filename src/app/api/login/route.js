@@ -27,19 +27,14 @@ export async function GET(req, res) {
   const db = client.db(dbName);
   const collection = db.collection('login'); // collection name
   const findResult = await collection.find({"username":
-  email, "password": pass}).toArray();
+  email}).toArray();
   console.log('Found documents =>', findResult);
   let valid = false
   const bcrypt = require('bcrypt');
   let hashResult = bcrypt.compareSync(pass, findResult[0].pass); // true
   console.log("checking " + findResult[0].pass);
   console.log("Hash Comparison Result " + hashResult);
-  if(findResult.length > 0){
-
-
-    console.log("found record");
-  }
-
+  
   if(findResult.length >0 && hashResult == true){
     
     valid = true;
@@ -49,18 +44,14 @@ export async function GET(req, res) {
     console.log("Saving username and auth status")
     cookies().set('auth', true);
     cookies().set('username',email)
-    
-  } 
-  else 
-  {
+    } 
+    else {
     valid = false;
     console.log("login invalid")
+    }
     
+    return Response.json({ "data":"" + valid + ""})
+  
   }
     
-
-  
-  // at the end of the process we need to send something back.
-  return Response.json({ "data":"valid" })
-}
 
