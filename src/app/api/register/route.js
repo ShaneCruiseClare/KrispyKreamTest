@@ -36,7 +36,7 @@ export async function GET(req, res) {
   const db = client.db(dbName);
   const collection = db.collection('login'); // collection name
   const findResult = await collection.insertOne({"username": email, "pass":
-  hash, "secondpass": secondpass, "address": address, "phone": phone});
+  hash, "secondpass": hash, "address": address, "phone": phone});
 
 
 
