@@ -18,6 +18,8 @@ import { createTheme } from '@mui/material/styles';
 import { green, purple } from '@mui/material/colors';
 import { useState, useEffect } from 'react'
 
+import { cookies } from 'next/headers'
+
 export default function Page() {
 
 
