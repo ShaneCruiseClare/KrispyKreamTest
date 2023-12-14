@@ -27,7 +27,7 @@ export async function GET(req, res) {
   const db = client.db(dbName);
   const collection = db.collection('login'); // collection name
   const findResult = await collection.find({"username":
-  email}).toArray();
+  email, "password": hash}).toArray();
   console.log('Found documents =>', findResult);
   let valid = false
   const bcrypt = require('bcrypt');
